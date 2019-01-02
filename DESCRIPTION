@@ -1,0 +1,10 @@
+Package: tomtom
+Type: Package
+Title: Miscellaneous functions for Thomas Mock
+Version: 0.1.0
+Author: Thomas Mock
+Maintainer: Thomas Mock <j.thomasmock@gmail.com>
+Description: Misc functions for Thomas Mock
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
