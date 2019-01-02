@@ -2,11 +2,17 @@
 % Please edit documentation in R/theme_tomtom.R
 \name{theme_tomtom}
 \alias{theme_tomtom}
-\title{My theme, adapted from 538}
+\title{Theme inspired by fivethirtyeight.com plots}
 \usage{
 theme_tomtom(base_size = 13, base_family = "")
+}
+\arguments{
+\item{base_size}{base font size}
+
+\item{base_family}{base font family}
 }
 \description{
 Theme inspired by the plots on
 \href{fivethirtyeight.com}{http://fivethirtyeight.com}.
 }
+\concept{themes fivethirtyeight}
