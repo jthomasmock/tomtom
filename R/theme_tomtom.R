@@ -8,7 +8,7 @@
 theme_tomtom <- function(base_size = 13, base_family = "") {
 
     theme_ipsum_tw(axis_title_just = "center") +
-        theme_grey(base_size = base_size, base_family = base_family) %+replace%
+        theme_minimal(base_size = base_size, base_family = base_family) %+replace%
         theme(
         line = element_line(colour = "black"),
         rect = element_rect(
