@@ -26,7 +26,6 @@ theme_tomtom <- function(base_size = 13, base_family = "") {
         panel.grid.major = element_line(colour = "#D2D2D2"),
         panel.grid.minor = element_blank(),
         plot.title = element_text(hjust = 0, size = rel(1.5), face = "bold"),
-        #plot.margin = unit(c(1, 1, 1, 1), "lines"),
         strip.background = element_rect(),
         plot.background = element_rect()
     )
