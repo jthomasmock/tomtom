@@ -2,12 +2,12 @@
 #'
 #' Theme inspired by the plots on
 #' \href{fivethirtyeight.com}{http://fivethirtyeight.com}.
-#'
-#' @inheritParams ggplot2::theme_grey
-#' @family themes fivethirtyeight
+#' @import ggplot2 hrbrthemes
 #' @export
+#'
 theme_tomtom <- function(base_size = 13, base_family = "") {
-    hrbrthemes::theme_ipsum_tw(axis_title_just = "center") +
+
+    theme_ipsum_tw(axis_title_just = "center") +
         theme_grey(base_size = base_size, base_family = base_family) %+replace%
         theme(
         line = element_line(colour = "black"),
