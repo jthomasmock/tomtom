@@ -7,8 +7,8 @@
 post_tidytuesday <- function(exploring, long_link){
 
     # Authenticate each session
-    tinycc::auth(secret_login = Sys.getenv("secret_login"),
-                 secret_api_key = Sys.getenv("secret_api_key"))
+    tinycc::auth(tinycc_login = Sys.getenv("secret_login"),
+                 tinycc_api_key = Sys.getenv("secret_api_key"))
 
     # set date for files structure and names
     week_date <- as.character(lubridate::today() + 1)
