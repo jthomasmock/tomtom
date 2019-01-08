@@ -2,12 +2,11 @@
 #'
 #' Theme inspired by the plots on
 #' \href{fivethirtyeight.com}{http://fivethirtyeight.com}.
-#' @import ggplot2 hrbrthemes
+#' @import ggplot2
 #' @export
 #'
-theme_tomtom <- function(base_size = 13, base_family = "") {
+theme_tomtom <- function(base_size = 13, base_family = "Titillium Web") {
 
-    theme_ipsum_tw(axis_title_just = "center") +
         theme_minimal(base_size = base_size, base_family = base_family) %+replace%
         theme(
         line = element_line(colour = "black"),

@@ -4,7 +4,7 @@
 \alias{theme_tomtom}
 \title{Theme inspired by fivethirtyeight.com plots}
 \usage{
-theme_tomtom(base_size = 13, base_family = "")
+theme_tomtom(base_size = 13, base_family = "Titillium Web")
 }
 \description{
 Theme inspired by the plots on
