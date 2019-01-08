@@ -9,7 +9,7 @@ theme_tomtom <- function(base_size = 13, base_family = "Titillium Web") {
 
         theme_minimal(base_size = base_size, base_family = base_family) %+replace%
         theme(
-        line = element_line(colour = "black"),
+        line = element_line(colour = "black", size = 0.5, linetype = "solid", lineend = "round"),
         rect = element_rect(
             fill = "#F0F0F0",
             linetype = 0, colour = NA),
