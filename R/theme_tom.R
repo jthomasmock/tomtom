@@ -1,7 +1,7 @@
-#' Theme inspired by fivethirtyeight.com plots
+#' Personal theme inspired by ggthemes::theme_fivethirtyeight and fivethirtyeight.com
 #'
 #' Theme inspired by the plots on
-#' \href{fivethirtyeight.com}{http://fivethirtyeight.com}.
+#' \href{ggthemes::theme_fivethirtyeight}{https://github.com/jrnold/ggthemes/blob/master/R/fivethirtyeight.R}.
 #' @import ggplot2
 #' @export theme_tom
 #'
@@ -36,20 +36,23 @@ theme_tom <- function(base_size = 12, font = "Titillium Web"){
     }
 
     # Text setting
-    txt <- element_text(size = base_size+2, colour = "black", face = "plain")
-    bold_txt <- element_text(size = base_size+2, colour = "black", face = "bold")
+    txt <- element_text(size = base_size + 2, colour = "black", face = "plain")
+    bold_txt <- element_text(size = base_size + 2, colour = "black", face = "bold")
+    large_txt <- element_text(size = base_size + 4, color = "black", face = "bold")
 
     theme_minimal(base_size = base_size, base_family = font) +
         theme(
             # Legend Settings
-            legemd.key = element_blank(),
-            legend.background = element_rect(),
+            legend.key = element_blank(),
+            legend.background = element_blank(),
             legend.position = "bottom",
             legend.direction = "horizontal",
             legend.box = "vertical",
 
             # Shapes
-            line = element_line(colour = "black", size = rel(0.5), linetype = "solid", lineend = "round"),
+            line = element_line(
+                colour = "black", size = rel(0.5),
+                linetype = "solid", lineend = "round"),
             rect = element_rect(
                 fill = "#F0F0F0",
                 linetype = 0, colour = NA),
@@ -57,14 +60,15 @@ theme_tom <- function(base_size = 12, font = "Titillium Web"){
             # Backgrounds
             strip.background = element_rect(),
             plot.background = element_rect(),
+            plot.margin = unit(c(1, 1, 1, 1), "lines"),
 
             # Axis & Titles
             text = txt,
-            axis.text = txt,
+            axis.text = bold_txt,
             axis.ticks = element_blank(),
             axis.line = element_blank(),
             axis.title = bold_txt,
-            plot.title = element_text(hjust = 0, size = rel(1.5), face = "bold"),
+            plot.title = large_txt,
 
             # Panel
             panel.grid = element_line(colour = NULL),
@@ -73,25 +77,3 @@ theme_tom <- function(base_size = 12, font = "Titillium Web"){
 
         )
 }
-
-theme_tom <- ggplot2::theme_minimal(base_size = 13, base_family = "Titillium Web") +
-    ggplot2::theme(
-        line = element_line(colour = "black", size = rel(0.5), linetype = "solid", lineend = "round"),
-        rect = element_rect(
-            fill = "#F0F0F0",
-            linetype = 0, colour = NA),
-        text = element_text(colour = "#3C3C3C"),
-        axis.text = element_text(),
-        axis.ticks = element_blank(),
-        axis.line = element_blank(),
-        legend.background = element_rect(),
-        legend.position = "bottom",
-        legend.direction = "horizontal",
-        legend.box = "vertical",
-        panel.grid = element_line(colour = NULL),
-        panel.grid.major = element_line(colour = "#D2D2D2"),
-        panel.grid.minor = element_blank(),
-        plot.title = element_text(hjust = 0, size = rel(1.5), face = "bold"),
-        strip.background = element_rect(),
-        plot.background = element_rect()
-    )
