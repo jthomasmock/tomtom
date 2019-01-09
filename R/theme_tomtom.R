@@ -5,11 +5,9 @@
 #' @import ggplot2
 #' @export
 #'
-theme_tomtom <- function(base_size = 13, base_family = "Titillium Web") {
-
-        theme_set(theme_minimal(base_size = base_size, base_family = base_family)) %+replace%
-        theme(
-        line = element_line(colour = "black", size = 0.5, linetype = "solid", lineend = "round"),
+theme_tom <- ggplot2::theme_minimal(base_size = 13, base_family = "Titillium Web") +
+    ggplot2::theme(
+        line = element_line(colour = "black", size = rel(0.5), linetype = "solid", lineend = "round"),
         rect = element_rect(
             fill = "#F0F0F0",
             linetype = 0, colour = NA),
@@ -28,4 +26,3 @@ theme_tomtom <- function(base_size = 13, base_family = "Titillium Web") {
         strip.background = element_rect(),
         plot.background = element_rect()
     )
-}
