@@ -53,93 +53,57 @@ std_err <- function(x){
 }
 
 
-#' Quoting version of c() array concatenate.
+#' Add a logo to your plot or image
 #'
-#' The qc() function is intended to help quote user inputs.
-#' It is a convenience function allowing the user to elide
-#' excess quotation marks.  It quotes its arguments instead
-#' of evaluating them, except in the case of a nested
-#' call to qc() itself.  Please see the examples for
-#' typical uses both for named and un-named character vectors.
-#'
-#'
-#' @param ... items to place into an array
-#' @return quoted array of character items
-#'
-#' @seealso \code{\link{qe}}, \code{\link{qae}}
-#'
-#' @examples
-#'
-#' a <- "x"
-#' qc(a) # returns the string "a" (not "x")
-#'
-#' qc("a") # return the string "a" (not "\"a\"")
-#'
-#' qc(sin(x))  # returns the string "sin(x)"
-#'
-#' qc(a, qc(b, c)) # returns c("a", "b", "c")
-#'
-#' qc(x=a, qc(y=b, z=c)) # returns c(x="a", y="b", z="c")
-#'
-#' qc('x'='a', wrapr::qc('y'='b', 'z'='c')) # returns c(x="a", y="b", z="c")
+#' This function places a logo at one of the corners of your image/plot
 #'
 #' @export
-#'
-qc <- function(...) {
-    .wrapr_priveate_var_args <- substitute(list(...))
-    if(length(.wrapr_priveate_var_args)<=1) {
-        return(c())
+#' @import magick
+
+add_logo <- function(plot_path, logo_path, logo_position){
+
+    # Requires magick R Package
+
+    # Useful error message for logo position
+    if (!logo_position %in% c("top right", "top left", "bottom right", "bottom left")) {
+        stop("Error Message: Uh oh! Logo Position not recognized\n  Try: logo_positon = 'top left', 'top right', 'bottom left', or 'bottom right'")
     }
-    .wrapr_priveate_var_env <- parent.frame()
-    .wrapr_priveate_var_names <- names(.wrapr_priveate_var_args)
-    .wrapr_priveate_var_res <- lapply(
-        2:length(.wrapr_priveate_var_args),
-        function(.wrapr_priveate_var_i) {
-            .wrapr_priveate_var_ei <- .wrapr_priveate_var_args[[.wrapr_priveate_var_i]]
-            .wrapr_priveate_var_ni <- NULL
-            if(.wrapr_priveate_var_i<=length(.wrapr_priveate_var_names)) {
-                .wrapr_priveate_var_ni <- .wrapr_priveate_var_names[[.wrapr_priveate_var_i]]
-            }
-            if(is.name(.wrapr_priveate_var_ei)) {
-                # names are scalars
-                .wrapr_priveate_var_ei <- as.character(.wrapr_priveate_var_ei)
-                if(!is.null(.wrapr_priveate_var_ni)) {
-                    names(.wrapr_priveate_var_ei) <- .wrapr_priveate_var_ni
-                }
-                return(.wrapr_priveate_var_ei)
-            }
-            if(is.language(.wrapr_priveate_var_ei)) {
-                .wrapr_priveate_var_fnname <- deparse(.wrapr_priveate_var_ei[[1]])
-                .wrapr_priveate_var_fnname <- gsub("[[:space:]]+", "", .wrapr_priveate_var_fnname)
-                if(isTRUE(.wrapr_priveate_var_fnname %in% c("qc", "wrapr::qc"))) {
-                    # this is the recursive case qc('x'='a', qc('y'='b', 'z'='c'))
-                    .wrapr_priveate_var_ei <- eval(.wrapr_priveate_var_ei,
-                                                   envir = .wrapr_priveate_var_env,
-                                                   enclos = .wrapr_priveate_var_env)
-                    return(.wrapr_priveate_var_ei)
-                }
-                # other case: quote expression
-                .wrapr_priveate_var_ei <- paste(deparse(.wrapr_priveate_var_ei), collapse = "\n")
-                if(!is.null(.wrapr_priveate_var_ni)) {
-                    names(.wrapr_priveate_var_ei) <- .wrapr_priveate_var_ni
-                }
-                return(.wrapr_priveate_var_ei)
-            }
-            if(is.vector(.wrapr_priveate_var_ei) || is.list(.wrapr_priveate_var_ei)) {
-                if(length(.wrapr_priveate_var_ei)<=0) {
-                    return(NULL)
-                }
-            }
-            # base case, character vectors, list, and objects
-            .wrapr_priveate_var_ei <- paste(as.character(.wrapr_priveate_var_ei), collapse = " ")
-            if(!is.null(.wrapr_priveate_var_ni)) {
-                names(.wrapr_priveate_var_ei) <- .wrapr_priveate_var_ni
-            }
-            return(.wrapr_priveate_var_ei)
-        })
-    .wrapr_priveate_var_res <- Filter(function(ei) { !is.null(ei) }, .wrapr_priveate_var_res)
-    if(length(.wrapr_priveate_var_res)<1) {
-        return(c())
+
+    # read in raw images
+    plot <- magick::image_read(plot_path)
+    logo_raw <- magick::image_read(logo_path)
+
+    # get dimensions of plot for scaling
+    plot_height <- magick::image_info(plot)$height
+    plot_width <- magick::image_info(plot)$width
+
+    # scale to 1/10th width of plot
+    logo <- magick::image_scale(logo_raw, as.character(plot_width/10))
+
+    # Get width of logo
+    logo_width <- magick::image_info(logo)$width
+    logo_height <- magick::image_info(logo)$height
+
+
+    # Set position of logo
+    # Position starts at 0,0 at top left
+
+    if (logo_position == "top right") {
+        x_pos = plot_width - logo_width - 1
+        y_pos = "0"
+    } else if (logo_position == "top left") {
+        x_pos = "0"
+        y_pos = "0"
+    } else if (logo_position == "bottom right") {
+        x_pos = plot_width - logo_width - 1
+        y_pos = plot_height - logo_height - 1
+    } else if (logo_position == "bottom left") {
+        x_pos = "0"
+        y_pos = plot_height - logo_height - 1
     }
-    unlist(.wrapr_priveate_var_res)
+
+    # Compose the actual overlay
+    magick::image_composite(plot, logo, offset = paste0("+", x_pos, "+", y_pos))
+
+
 }
