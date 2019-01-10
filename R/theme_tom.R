@@ -64,7 +64,7 @@ theme_tom <- function(base_size = 12, font = "Titillium Web"){
 
             # Axis & Titles
             text = txt,
-            axis.text = bold_txt,
+            axis.text = txt,
             axis.ticks = element_blank(),
             axis.line = element_blank(),
             axis.title = bold_txt,
