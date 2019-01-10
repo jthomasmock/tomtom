@@ -1,6 +1,6 @@
 #' Create the R4DS Community TidyTuesday posts
 #'
-#' @import rtweet glue emo lubridate here tinycc purrr
+#' @import purrr rtweet glue emo here lubridate
 #' @export
 #'
 
