@@ -60,7 +60,7 @@ std_err <- function(x){
 #' @export
 #' @import magick
 
-add_logo <- function(plot_path, logo_path, logo_position){
+add_logo <- function(plot_path, logo_path, logo_position, logo_scale = 10){
 
     # Requires magick R Package
 
@@ -77,8 +77,9 @@ add_logo <- function(plot_path, logo_path, logo_position){
     plot_height <- magick::image_info(plot)$height
     plot_width <- magick::image_info(plot)$width
 
-    # scale to 1/10th width of plot
-    logo <- magick::image_scale(logo_raw, as.character(plot_width/10))
+    # default scale to 1/10th width of plot
+    # can change by altering logo_scale
+    logo <- magick::image_scale(logo_raw, as.character(plot_width/logo_scale))
 
     # Get width of logo
     logo_width <- magick::image_info(logo)$width

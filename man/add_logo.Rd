@@ -4,7 +4,7 @@
 \alias{add_logo}
 \title{Add a logo to your plot or image}
 \usage{
-add_logo(plot_path, logo_path, logo_position)
+add_logo(plot_path, logo_path, logo_position, logo_scale = 10)
 }
 \description{
 This function places a logo at one of the corners of your image/plot
