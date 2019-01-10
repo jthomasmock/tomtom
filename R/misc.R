@@ -87,23 +87,23 @@ add_logo <- function(plot_path, logo_path, logo_position){
 
     # Set position of logo
     # Position starts at 0,0 at top left
+    # Using 0.01 for 1% - aesthetic padding
 
     if (logo_position == "top right") {
-        x_pos = plot_width - logo_width - 1
-        y_pos = "0"
+        x_pos = plot_width - logo_width - 0.01 * plot_width
+        y_pos = 0.01 * plot_height
     } else if (logo_position == "top left") {
-        x_pos = "0"
-        y_pos = "0"
+        x_pos = 0.01 * plot_width
+        y_pos = 0.01 * plot_height
     } else if (logo_position == "bottom right") {
-        x_pos = plot_width - logo_width - 1
-        y_pos = plot_height - logo_height - 1
+        x_pos = plot_width - logo_width - 0.01 * plot_width
+        y_pos = plot_height - logo_height - 0.01 * plot_height
     } else if (logo_position == "bottom left") {
-        x_pos = "0"
-        y_pos = plot_height - logo_height - 1
+        x_pos = 0.01 * plot_width
+        y_pos = plot_height - logo_height - 0.01 * plot_height
     }
 
     # Compose the actual overlay
     magick::image_composite(plot, logo, offset = paste0("+", x_pos, "+", y_pos))
-
 
 }
