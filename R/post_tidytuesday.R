@@ -37,7 +37,7 @@ post_tidytuesday <- function(exploring, short_link){
 }
 
 #' Create the TidyTuesday data dictionary
-#' @import
+#' @import dplyr tibble knitr
 #' @export
 
 create_dictionary <- function(x) {
