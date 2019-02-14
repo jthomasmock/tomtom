@@ -35,3 +35,14 @@ post_tidytuesday <- function(exploring, short_link){
                   here::here("2019", week_date, "pic2.png")
         ))
 }
+
+#' Create the TidyTuesday data dictionary
+#' @import
+#' @export
+
+create_dictionary <- function(x) {
+    tibble::tibble(variable = names(x)) %>%
+    dplyr::mutate(class = purrr::map(x, typeof),
+                  description = ".") %>%
+    knitr::kable()
+    }
