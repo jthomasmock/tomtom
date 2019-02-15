@@ -2,6 +2,7 @@
 
 export(add_logo)
 export(create_dictionary)
+export(geom_bullet)
 export(neg)
 export(post_tidytuesday)
 export(std_err)
