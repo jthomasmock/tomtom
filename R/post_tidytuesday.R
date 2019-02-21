@@ -1,6 +1,10 @@
 #' Create the R4DS Community TidyTuesday posts
 #'
-#' @import purrr rtweet glue emo here lubridate
+#' @importFrom rtweet post_tweet
+#' @importFrom lubridate today ymd
+#' @importFrom glue glue
+#' @importFrom emo ji
+#' @importFrom here here
 #' @export
 #'
 
@@ -37,7 +41,9 @@ post_tidytuesday <- function(exploring, short_link){
 }
 
 #' Create the TidyTuesday data dictionary
-#' @import dplyr tibble knitr
+#' @importFrom dplyr mutate
+#' @importFrom tibble tibble
+#' @importFrom knitr kable
 #' @export
 
 create_dictionary <- function(x) {

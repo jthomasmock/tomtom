@@ -1,6 +1,7 @@
 #' Code to generate a bullet graph
 #'
-#' @import dplyr ggplot2
+#' @importFrom dplyr distinct
+#' @import ggplot2
 #' @export
 
 
@@ -32,7 +33,7 @@ geom_bullet <- function(df, # input dataframe
 
     # get number of factors to correcty apply the annotate labels
     # that correspond to the good, acceptable, poor ranges
-    n_factors <- nrow(distinct(df, !!x_var))
+    n_factors <- nrow(dplyr::distinct(df, !!x_var))
 
     # build the ggplot2
     ggplot(df, aes(x = !!x_var, y = !!y_var)) +
