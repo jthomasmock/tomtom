@@ -22,4 +22,5 @@ devtools::install_github("jthomasmock/tomtom")
 * substr_right() - Selects `n` letters starting from the right of a string  
 * theme_tom() - a `ggplot2` theme similar to `fivethirtyeight` plots  
 * geom_bullet() - a full-fledged way to plot bullet graphs in R
+* tweet_embed() - get markdown formatted Tweet for embedding
 
