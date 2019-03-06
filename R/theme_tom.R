@@ -12,19 +12,23 @@ theme_tom <- function(base_size = 12, font = "Titillium Web"){
 
     # http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette
     cb_palette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+    # https://www.color-hex.com/color-palette/74767
+    tom_palette <- c("#003399", "#ff2b4f", "#3686d3", "#FCAB27", "#88398a")
+    # murdoch theme https://gist.github.com/johnburnmurdoch/bd20db77b2582031604ccd1bdc4be582
+    ft_palette <- c("#00218D","#FF2B4F","#0083EB","#FCAB27","#FF49EF")
 
     # color pieces
     scale_fill_cb <- function(){
 
         structure(list(
-            scale_fill_manual(values=cb_palette)
+            scale_fill_manual(values = cb_palette)
         ))
     }
 
     scale_color_discrete_cb<- function(){
 
         structure(list(
-            scale_color_manual(values=cb_palette)
+            scale_color_manual(values = cb_palette)
         ))
     }
 
@@ -66,7 +70,7 @@ theme_tom <- function(base_size = 12, font = "Titillium Web"){
             text = txt,
             axis.text = txt,
             axis.ticks = element_blank(),
-            axis.line = element_blank(),
+            axis.line.x = line,
             axis.title = bold_txt,
             plot.title = large_txt,
 
