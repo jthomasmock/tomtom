@@ -44,6 +44,15 @@ theme_tom <- function(base_size = 12, font = "Fira Mono"){
     bold_txt <- element_text(size = base_size + 2, colour = "black", face = "bold")
     large_txt <- element_text(size = base_size + 4, color = "black", face = "bold")
 
+
+    # Shapes
+    line = element_line(
+        colour = "black", size = rel(0.5),
+        linetype = "solid", lineend = "round")
+    rect = element_rect(
+        fill = "#F0F0F0",
+        linetype = 0, colour = NA)
+
     theme_minimal(base_size = base_size, base_family = font) + #%+replace%
         theme(
             # Legend Settings
@@ -52,14 +61,6 @@ theme_tom <- function(base_size = 12, font = "Fira Mono"){
             legend.position = "bottom",
             legend.direction = "horizontal",
             legend.box = "vertical",
-
-            # Shapes
-            line = element_line(
-                colour = "black", size = rel(0.5),
-                linetype = "solid", lineend = "round"),
-            rect = element_rect(
-                fill = "#F0F0F0",
-                linetype = 0, colour = NA),
 
             # Backgrounds
             strip.background = element_rect(),
