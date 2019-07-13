@@ -1,98 +1,63 @@
-#' Personal theme inspired by ggthemes::theme_fivethirtyeight and fivethirtyeight.com
+#' Personal theme inspired by bbplot
+#' https://github.com/bbc/bbplot/blob/master/R/bbc_style.R
 #'
 #' Theme inspired by the plots on
-#' \href{ggthemes::theme_fivethirtyeight}{https://github.com/jrnold/ggthemes/blob/master/R/fivethirtyeight.R}.
+#' \href{bbplot}{https://github.com/bbc/bbplot/blob/master/R/bbc_style.R}.
 #' @import ggplot2
 #' @export theme_tom
 #'
 
-theme_tom <- function(base_size = 12, font = "Fira Mono"){
+theme_tom <- function() {
+    font <- "Fira Mono"
 
-    ### Palette
+    ggplot2::theme(
 
-    # http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette
-    cb_palette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
-    # https://www.color-hex.com/color-palette/74767
-    tom_palette <- c("#003399", "#ff2b4f", "#3686d3", "#FCAB27", "#88398a")
-    # murdoch theme https://gist.github.com/johnburnmurdoch/bd20db77b2582031604ccd1bdc4be582
-    ft_palette <- c("#00218D","#FF2B4F","#0083EB","#FCAB27","#FF49EF")
+        #Text format:
+        #This sets the font, size, type and colour of text for the chart's title
+        plot.title = ggplot2::element_text(family=font,
+                                           size=28,
+                                           face="bold",
+                                           color="#222222"),
+        #This sets the font, size, type and colour of text for the chart's subtitle, as well as setting a margin between the title and the subtitle
+        plot.subtitle = ggplot2::element_text(family=font,
+                                              size=22,
+                                              margin=ggplot2::margin(9,0,9,0)),
+        plot.caption = ggplot2::element_blank(),
+        #This leaves the caption text element empty, because it is set elsewhere in the finalise plot function
 
-    # color pieces
-    scale_fill_cb <- function(){
+        #Legend format
+        #This sets the position and alignment of the legend, removes a title and backround for it and sets the requirements for any text within the legend. The legend may often need some more manual tweaking when it comes to its exact position based on the plot coordinates.
+        legend.position = "top",
+        legend.text.align = 0,
+        legend.background = ggplot2::element_blank(),
+        legend.title = ggplot2::element_blank(),
+        legend.key = ggplot2::element_blank(),
+        legend.text = ggplot2::element_text(family=font,
+                                            size=18,
+                                            color="#222222"),
 
-        structure(list(
-            scale_fill_manual(values = cb_palette)
-        ))
-    }
+        #Axis format
+        #This sets the text font, size and colour for the axis test, as well as setting the margins and removes lines and ticks. In some cases, axis lines and axis ticks are things we would want to have in the chart - the cookbook shows examples of how to do so.
+        axis.title = ggplot2::element_blank(),
+        axis.text = ggplot2::element_text(family=font,
+                                          size=18,
+                                          color="#222222"),
+        axis.text.x = ggplot2::element_text(margin=ggplot2::margin(5, b = 10)),
+        axis.ticks = ggplot2::element_blank(),
+        axis.line = ggplot2::element_blank(),
 
-    scale_color_discrete_cb<- function(){
+        #Grid lines
+        #This removes all minor gridlines and adds major y gridlines. In many cases you will want to change this to remove y gridlines and add x gridlines. The cookbook shows you examples for doing so
+        panel.grid.minor = ggplot2::element_blank(),
+        panel.grid.major.y = ggplot2::element_line(color="#cbcbcb"),
+        panel.grid.major.x = ggplot2::element_blank(),
 
-        structure(list(
-            scale_color_manual(values = cb_palette)
-        ))
-    }
+        #Blank background
+        #This sets the panel background as blank, removing the standard grey ggplot background colour from the plot
+        panel.background = ggplot2::element_blank(),
 
-    scale_color_continuous_cb <- function(){
-
-        structure(list(
-            scale_color_gradientn(colours = cb_palette)
-        ))
-    }
-
-    # Text setting
-    txt <- element_text(size = base_size + 2, colour = "black", face = "plain")
-    bold_txt <- element_text(size = base_size + 2, colour = "black", face = "bold")
-    large_txt <- element_text(size = base_size + 4, color = "black", face = "bold")
-
-
-    theme_minimal(base_size = base_size, base_family = font) + #%+replace%
-        theme(
-            # Legend Settings
-            legend.key = element_blank(),
-            legend.background = element_blank(),
-            legend.position = "bottom",
-            legend.direction = "horizontal",
-            legend.box = "vertical",
-
-            # Backgrounds
-            strip.background = element_rect(),
-            plot.background = element_rect(),
-            plot.margin = unit(c(1, 1, 1, 1), "lines"),
-
-            # Shapes
-            # line_set = element_line(
-            #     colour = "black",
-            #     size = rel(0.5),
-            #     linetype = "solid"),
-            # rect_set = element_rect(
-            #     fill = "#F0F0F0",
-            #     linetype = 0,
-            #     colour = NA),
-
-            # Axis & Titles
-            text = txt,
-            axis.text = txt,
-            axis.ticks = element_blank(),
-            axis.line = element_line(
-                colour = "black",
-                size = rel(0.5),
-                linetype = "solid"),
-            axis.title = bold_txt,
-            plot.title = large_txt,
-
-            # Panel
-            panel.grid = element_line(colour = NULL),
-            panel.grid.major = element_line(colour = "#D2D2D2"),
-            panel.grid.minor = element_blank()
-        )
-    }
-
-#
-# .onAttach <- function(pkgname, libname) {
-#     my_palette <- c('blue', 'black', 'red')
-#     my_theme <- theme_bw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
-#     theme_set(my_theme)
-#
-#     assign("scale_colour_discrete", function(..., values = my_palette) scale_colour_manual(..., values = values), globalenv())
-#     assign("scale_fill_discrete", function(..., values = my_palette) scale_fill_manual(..., values = values), globalenv())
-# }
+        #Strip background (#This sets the panel background for facet-wrapped plots to white, removing the standard grey ggplot background colour and sets the title size of the facet-wrap title to font size 22)
+        strip.background = ggplot2::element_rect(fill="white"),
+        strip.text = ggplot2::element_text(size  = 22,  hjust = 0)
+    )
+}
