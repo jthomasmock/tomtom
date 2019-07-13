@@ -6,7 +6,7 @@
 #' @export theme_tom
 #'
 
-theme_tom <- function(base_size = 12, font = "Fira Mono"){
+theme_tom <- function(base_size = 12, font = "Titillium Web"){
 
     ### Palette
 
