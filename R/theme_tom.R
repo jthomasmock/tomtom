@@ -3,7 +3,6 @@
 #'
 #' Theme inspired by the plots on
 #' \href{bbplot}{https://github.com/bbc/bbplot/blob/master/R/bbc_style.R}.
-#' @import ggplot2
 #' @export
 #'
 
@@ -59,5 +58,9 @@ theme_tom <- function() {
         #Strip background (#This sets the panel background for facet-wrapped plots to white, removing the standard grey ggplot background colour and sets the title size of the facet-wrap title to font size 22)
         strip.background = ggplot2::element_rect(fill="white"),
         strip.text = ggplot2::element_text(size  = 22,  hjust = 0)
-    )
+    ) +
+        ggplot2::theme(
+            axis.line = ggplot2::element_blank()
+
+        )
 }
