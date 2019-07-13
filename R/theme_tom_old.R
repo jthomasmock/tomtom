@@ -3,7 +3,6 @@
 #' Theme inspired by the plots on
 #' \href{ggthemes::theme_fivethirtyeight}{https://github.com/jrnold/ggthemes/blob/master/R/fivethirtyeight.R}.
 #' @import ggplot2
-#' @export theme_tom_old
 #'
 
 theme_tom <- function(base_size = 12, font = "Fira Mono"){
