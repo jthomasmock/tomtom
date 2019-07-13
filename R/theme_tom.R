@@ -6,7 +6,7 @@
 #' @export theme_tom
 #'
 
-theme_tom <- function(base_size = 12, font = "Titillium Web"){
+theme_tom <- function(base_size = 12, font = "Fira Mono"){
 
     ### Palette
 
@@ -44,7 +44,7 @@ theme_tom <- function(base_size = 12, font = "Titillium Web"){
     bold_txt <- element_text(size = base_size + 2, colour = "black", face = "bold")
     large_txt <- element_text(size = base_size + 4, color = "black", face = "bold")
 
-    theme_minimal(base_size = base_size, base_family = font) +
+    theme_minimal(base_size = base_size, base_family = font) %+replace%
         theme(
             # Legend Settings
             legend.key = element_blank(),
@@ -81,3 +81,13 @@ theme_tom <- function(base_size = 12, font = "Titillium Web"){
 
         )
 }
+
+#
+# .onAttach <- function(pkgname, libname) {
+#     my_palette <- c('blue', 'black', 'red')
+#     my_theme <- theme_bw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+#     theme_set(my_theme)
+#
+#     assign("scale_colour_discrete", function(..., values = my_palette) scale_colour_manual(..., values = values), globalenv())
+#     assign("scale_fill_discrete", function(..., values = my_palette) scale_fill_manual(..., values = values), globalenv())
+# }
