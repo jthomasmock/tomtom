@@ -44,7 +44,7 @@ theme_tom <- function(base_size = 12, font = "Fira Mono"){
     bold_txt <- element_text(size = base_size + 2, colour = "black", face = "bold")
     large_txt <- element_text(size = base_size + 4, color = "black", face = "bold")
 
-    theme_minimal(base_size = base_size, base_family = font) %+replace%
+    theme_minimal(base_size = base_size, base_family = font) + #%+replace%
         theme(
             # Legend Settings
             legend.key = element_blank(),
