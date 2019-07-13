@@ -4,7 +4,7 @@
 \alias{theme_tom}
 \title{Personal theme inspired by ggthemes::theme_fivethirtyeight and fivethirtyeight.com}
 \usage{
-theme_tom(base_size = 12, font = "Titillium Web")
+theme_tom(base_size = 12, font = "Fira Mono")
 }
 \description{
 Theme inspired by the plots on

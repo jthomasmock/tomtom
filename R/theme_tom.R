@@ -78,9 +78,8 @@ theme_tom <- function(base_size = 12, font = "Fira Mono"){
             panel.grid = element_line(colour = NULL),
             panel.grid.major = element_line(colour = "#D2D2D2"),
             panel.grid.minor = element_blank()
-
         )
-}
+    }
 
 #
 # .onAttach <- function(pkgname, libname) {
