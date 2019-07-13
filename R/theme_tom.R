@@ -60,18 +60,23 @@ theme_tom <- function(base_size = 12, font = "Fira Mono"){
             plot.margin = unit(c(1, 1, 1, 1), "lines"),
 
             # Shapes
-            line = element_line(
-                colour = "black", size = rel(0.5),
-                linetype = "solid"),
-            rect = element_rect(
-                fill = "#F0F0F0",
-                linetype = 0, colour = NA),
+            # line_set = element_line(
+            #     colour = "black",
+            #     size = rel(0.5),
+            #     linetype = "solid"),
+            # rect_set = element_rect(
+            #     fill = "#F0F0F0",
+            #     linetype = 0,
+            #     colour = NA),
 
             # Axis & Titles
             text = txt,
             axis.text = txt,
             axis.ticks = element_blank(),
-            axis.line = line,
+            axis.line = element_line(
+                colour = "black",
+                size = rel(0.5),
+                linetype = "solid"),
             axis.title = bold_txt,
             plot.title = large_txt,
 
