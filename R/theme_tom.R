@@ -4,7 +4,7 @@
 #' Theme inspired by the plots on
 #' \href{bbplot}{https://github.com/bbc/bbplot/blob/master/R/bbc_style.R}.
 #' @import ggplot2
-#' @export theme_tom
+#' @export
 #'
 
 theme_tom <- function() {
