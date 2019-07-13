@@ -3,10 +3,10 @@
 #'
 #' Theme inspired by the plots on
 #' \href{bbplot}{https://github.com/bbc/bbplot/blob/master/R/bbc_style.R}.
-#' @export
+#' @export theme_tomtom
 #'
 
-theme_tom <- function() {
+theme_tomtom <- function() {
     font <- "Fira Mono"
 
     ggplot2::theme(
