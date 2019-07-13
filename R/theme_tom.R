@@ -6,7 +6,7 @@
 #' @export theme_tom
 #'
 
-theme_tom <- function(base_size = 12, font = "Titillium Web"){
+theme_tom <- function(base_size = 12, font = "Fira Mono"){
 
     ### Palette
 
@@ -70,7 +70,7 @@ theme_tom <- function(base_size = 12, font = "Titillium Web"){
             text = txt,
             axis.text = txt,
             axis.ticks = element_blank(),
-            axis.line.x = line,
+            axis.line = line,
             axis.title = bold_txt,
             plot.title = large_txt,
 
