@@ -7,7 +7,7 @@
 #'
 
 theme_tomtom <- function() {
-    font <- "Fira Mono"
+    font <- "Nunito-Regular"
 
     ggplot2::theme(
 
