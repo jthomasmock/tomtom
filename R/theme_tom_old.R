@@ -72,10 +72,11 @@ theme_538 <- function(base_size = 12, font = "Fira Mono"){
             text = txt,
             axis.text = txt,
             axis.ticks = element_blank(),
-            axis.line = element_line(
-                colour = "black",
-                size = rel(0.5),
-                linetype = "solid"),
+            axis.line = element_blank(),
+            # axis.line = element_line(
+            #     colour = "black",
+            #     size = rel(0.5),
+            #     linetype = "solid"),
             axis.title = bold_txt,
             plot.title = large_txt,
 
