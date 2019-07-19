@@ -5,7 +5,7 @@
 #' @import ggplot2
 #' @export theme_538
 
-theme_538 <- function(base_size = 12, font = "Fira Mono"){
+theme_538 <- function(base_size = 12, font = "Lato"){
 
     ### Palette
 
@@ -40,7 +40,8 @@ theme_538 <- function(base_size = 12, font = "Fira Mono"){
 
     # Text setting
     txt <- element_text(size = base_size + 2, colour = "black", face = "plain")
-    bold_txt <- element_text(size = base_size + 2, colour = "black", face = "bold")
+    bold_txt <- element_text(size = base_size + 2, colour = "black",
+                             family = "Montserrat", face = "bold")
     large_txt <- element_text(size = base_size + 4, color = "black", face = "bold")
 
 
