@@ -140,7 +140,14 @@ tomtom_palettes <- list(
 
     `full`  = tomtom_cols("blue", "red", "orange", "rstudio blue", "purple"),
 
-    `grey`  = tomtom_cols("light grey", "dark grey")
+    `grey`  = tomtom_cols("light grey", "dark grey"),
+
+    # http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette
+    `cb_pal` = c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"),
+
+    # murdoch theme https://gist.github.com/johnburnmurdoch/bd20db77b2582031604ccd1bdc4be582
+    `ft_pal` <- c("#00218D","#FF2B4F","#0083EB","#FCAB27","#FF49EF")
+
 )
 
 #' @export
