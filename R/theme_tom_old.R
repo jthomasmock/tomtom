@@ -97,3 +97,4 @@ theme_538 <- function(base_size = 12, font = "Lato"){
 #     assign("scale_colour_discrete", function(..., values = my_palette) scale_colour_manual(..., values = values), globalenv())
 #     assign("scale_fill_discrete", function(..., values = my_palette) scale_fill_manual(..., values = values), globalenv())
 # }
+

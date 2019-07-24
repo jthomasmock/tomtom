@@ -64,3 +64,90 @@ theme_tomtom <- function() {
 
         )
 }
+
+tomtom_colors <- c(
+    `red`        = "#ff2b4f",
+    `green`      = "#00b159",
+    `blue`       = "#003399",
+    `orange`     = "#fcab27",
+    `yellow`     = "#ffc425",
+    `purple`     = "#88398a",
+    `rstudio blue` = "#3686d3",
+    `light grey` = "#cccccc",
+    `dark grey`  = "#8c8c8c")
+
+#' Function to extract tomtom colors as hex codes
+#'
+#' @param ... Character names of tomtom_colors
+#'
+tomtom_cols <- function(...) {
+    cols <- c(...)
+
+    if (is.null(cols))
+        return (tomtom_colors)
+
+    tomtom_colors[cols]
+}
+
+#' Color scale constructor for tomtom colors
+#'
+#' @param palette Character name of palette in tomtom_palettes
+#' @param discrete Boolean indicating whether color aesthetic is discrete or not
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to discrete_scale() or
+#'            scale_color_gradientn(), used respectively when discrete is TRUE or FALSE
+#'
+scale_colour_tomtom <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
+    pal <- tomtom_pal(palette = palette, reverse = reverse)
+
+    if (discrete) {
+        discrete_scale("colour", paste0("tomtom_", palette), palette = pal, ...)
+    } else {
+        scale_color_gradientn(colours = pal(256), ...)
+    }
+}
+
+scale_color_tomtom <- scale_colour_tomtom
+
+#' Fill scale constructor for tomtom colors
+#'
+#' @param palette Character name of palette in tomtom_palettes
+#' @param discrete Boolean indicating whether color aesthetic is discrete or not
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to discrete_scale() or
+#'            scale_color_gradientn(), used respectively when discrete is TRUE or FALSE
+#'
+#'
+
+scale_fill_tomtom <- function(palette = "main", discrete = TRUE,
+                              reverse = FALSE, ...) {
+    pal <- tomtom_pal(palette = palette, reverse = reverse)
+
+    if (discrete) {
+        discrete_scale("colour", paste0("tomtom_", palette), palette = pal, ...)
+    } else {
+        scale_color_gradientn(colours = pal(256), ...)
+    }
+}
+
+
+
+#' @export
+tomtom_palettes <- list(
+    `main`  = tomtom_cols("blue", "red", "orange"),
+
+    `cool`  = tomtom_cols("blue", "green"),
+
+    `full`  = tomtom_cols("blue", "red", "orange", "rstudio blue", "purple"),
+
+    `grey`  = tomtom_cols("light grey", "dark grey")
+)
+
+#' @export
+tomtom_pal <- function(palette = "main", reverse = FALSE, ...) {
+    pal <- tomtom_palettes[[palette]]
+
+    if (reverse) pal <- rev(pal)
+
+    colorRampPalette(pal, ...)
+}
