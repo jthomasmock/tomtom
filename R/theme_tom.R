@@ -77,9 +77,9 @@ tomtom_colors <- c(
     `dark grey`  = "#8c8c8c",
     `ft dark blue` = "#00218D",
     `ft light blue` = "#0083EB",
-    `ft red` = "#FF2B4F",
-    `ft pink` = "FF49EF",
-    `ft orange` = "#FCAB27"
+    `ft red` = "#ff2b4f",
+    `ft pink` = "#ff49ef",
+    `ft orange` = "#fcab27"
     )
 
 #' Function to extract tomtom colors as hex codes
