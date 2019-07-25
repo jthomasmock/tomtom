@@ -102,7 +102,7 @@ tomtom_cols <- function(...) {
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to discrete_scale() or
 #'            scale_color_gradientn(), used respectively when discrete is TRUE or FALSE
-#'
+#' @export
 scale_colour_tomtom <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
     pal <- tomtom_pal(palette = palette, reverse = reverse)
 
@@ -123,7 +123,7 @@ scale_color_tomtom <- scale_colour_tomtom
 #' @param ... Additional arguments passed to discrete_scale() or
 #'            scale_color_gradientn(), used respectively when discrete is TRUE or FALSE
 #'
-#'
+#' @export
 
 scale_fill_tomtom <- function(palette = "main", discrete = TRUE,
                               reverse = FALSE, ...) {
