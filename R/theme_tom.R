@@ -103,7 +103,10 @@ tomtom_cols <- function(...) {
 #' @param ... Additional arguments passed to discrete_scale() or
 #'            scale_color_gradientn(), used respectively when discrete is TRUE or FALSE
 #' @export
-scale_colour_tomtom <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
+#'
+
+
+scale_color_tomtom <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
     pal <- tomtom_pal(palette = palette, reverse = reverse)
 
     if (discrete) {
@@ -113,7 +116,7 @@ scale_colour_tomtom <- function(palette = "main", discrete = TRUE, reverse = FAL
     }
 }
 
-scale_color_tomtom <- scale_colour_tomtom
+#scale_color_tomtom <- scale_colour_tomtom
 
 #' Fill scale constructor for tomtom colors
 #'
@@ -165,4 +168,28 @@ tomtom_pal <- function(palette = "main", reverse = FALSE, ...) {
     if (reverse) pal <- rev(pal)
 
     colorRampPalette(pal, ...)
+}
+
+#' @export
+#'
+tom_pal_picker <- function(name, n, type = c("discrete", "continuous")) {
+    type <- match.arg(type)
+
+    pal <- tomtom_palettes[[name]]
+    if (is.null(pal))
+        stop("Palette not found.")
+
+    if (missing(n)) {
+        n <- length(pal)
+    }
+
+    if (type == "discrete" && n > length(pal)) {
+        stop("Number of requested colors greater than what palette can offer")
+    }
+
+    out <- switch(type,
+                  continuous = grDevices::colorRampPalette(pal)(n),
+                  discrete = pal[1:n]
+    )
+    structure(out, class = "palette", name = name)
 }
