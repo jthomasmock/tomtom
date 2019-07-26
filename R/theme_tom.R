@@ -7,7 +7,7 @@
 #'
 
 theme_tomtom <- function() {
-    font <- "Nunito-Regular"
+    font <- "Fira Sans"
 
     ggplot2::theme(
 
@@ -21,7 +21,10 @@ theme_tomtom <- function() {
         plot.subtitle = ggplot2::element_text(family=font,
                                               size=22,
                                               margin=ggplot2::margin(9,0,9,0)),
-        plot.caption = ggplot2::element_blank(),
+        plot.caption = ggplot2::element_text(family=font,
+                                             size=22,
+                                             face="bold",
+                                             color="#222222"),
         #This leaves the caption text element empty, because it is set elsewhere in the finalise plot function
 
         #Legend format
