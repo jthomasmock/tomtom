@@ -172,7 +172,7 @@ tomtom_pal <- function(palette = "main", reverse = FALSE, ...) {
 
 #' @export
 #'
-tom_pal_picker <- function(name, n, type = c("discrete", "continuous")) {
+tom_pal_picker <- function(name = "main", n, type = c("discrete", "continuous")) {
     type <- match.arg(type)
 
     pal <- tomtom_palettes[[name]]
@@ -190,6 +190,6 @@ tom_pal_picker <- function(name, n, type = c("discrete", "continuous")) {
     out <- switch(type,
                   continuous = grDevices::colorRampPalette(pal)(n),
                   discrete = pal[1:n]
-    )
+    ) %>% as.vector()
     structure(out, class = "palette", name = name)
 }
