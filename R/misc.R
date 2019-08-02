@@ -108,3 +108,15 @@ add_logo <- function(plot_path, logo_path, logo_position, logo_scale = 10){
     magick::image_composite(plot, logo, offset = paste0("+", x_pos, "+", y_pos))
 
 }
+
+
+#' Wrap your text with new line
+#'
+#'
+#' @export
+#'
+
+txt_wrapper <- function(x, ...){
+    paste(strwrap(x, ...),
+          collapse = "\n")
+}
