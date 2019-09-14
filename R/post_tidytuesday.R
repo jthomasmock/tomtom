@@ -52,3 +52,25 @@ create_dictionary <- function(x) {
                   description = ".") %>%
     knitr::kable()
     }
+
+#' Create the TidyTuesday directory
+#' @importFrom fs dir_create
+#' @importFrom fs file_copy
+#' @importFrom here here
+#' @importFrom glue glue
+#' @export
+
+
+create_readme <- function(){
+
+    tuesday_date <- glue::glue("2019/{Sys.Date() + 1}")
+
+    fs::dir_create(
+        here::here(
+            tuesday_date
+        )
+    )
+
+    fs::file_copy("readme.md", here::here(tuesday_date))
+
+}
