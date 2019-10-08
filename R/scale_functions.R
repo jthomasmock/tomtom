@@ -1,10 +1,10 @@
 #' @export
-tomtom_pal <- function(palette = "main", reverse = FALSE, ...) {
+tomtom_pal <- function(palette = "main", n, reverse = FALSE, ...) {
     pal <- tomtom_palettes[[palette]]
 
     if (reverse) pal <- rev(pal)
 
-    colorRampPalette(pal, ...)
+    colorRampPalette(pal, ...)(n)
 }
 
 #' Color scale constructor for tomtom colors
