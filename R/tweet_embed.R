@@ -5,25 +5,23 @@
 #' @return character
 #' @details Arguments to pass to the API call can be found \href{https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-oembed}{here}
 #' @examples
-#' name   <- 'kearneymw'
-#' status <- '1087047171306856451'
-#'
+#' name <- "kearneymw"
+#' status <- "1087047171306856451"
+#' 
 #' tweet_embed(screen_name = name, status_id = status)
-#'
 #' @export
 #' @importFrom httr GET content
 #'
 
-tweet_embed <- function(screen_name, status_id){
+tweet_embed <- function(screen_name, status_id) {
+  core_url <- "https://publish.twitter.com/oembed?url=https%3A%2F%2Ftwitter.com%2F"
+  status_url <- "%2Fstatus%2F"
 
-    core_url <- "https://publish.twitter.com/oembed?url=https%3A%2F%2Ftwitter.com%2F"
-    status_url <- "%2Fstatus%2F"
+  url <- paste0(core_url, screen_name, status_url, status_id)
 
-    url <- paste0(core_url, screen_name, status_url, status_id)
+  api_payload <- httr::GET(url)
 
-    api_payload <- httr::GET(url)
+  api_content <- httr::content(api_payload)
 
-    api_content <- httr::content(api_payload)
-
-    api_content[["html"]]
+  api_content[["html"]]
 }

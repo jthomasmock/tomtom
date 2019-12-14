@@ -1,0 +1,31 @@
+---
+output: md_document
+params:
+    title: "CHANGE TITLE"
+---
+
+# `r params$title`
+
+This week's data is a [REPLACE LINK](URL).
+
+
+# Get the Data
+
+
+params$data <- `r glue::glue(readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/{substr(next_tuesday,1,4)}/{next_tuesday}/{data}.csv"))`
+
+# Or read in with tidytuesdayR package (https://github.com/thebioengineer/tidytuesdayR)
+# Either ISO-8601 date or year/week works!
+# Install via devtools::install_github("thebioengineer/tidytuesdayR")
+
+tuesdata <- tidytuesdayR::tt_load("2019-12-10")
+tuesdata <- tidytuesdayR::tt_load(2019, week = 50)
+
+params$data <- tuesdata$params$data
+
+
+# Dictionary
+
+### `params$data.csv`
+
+# Cleaning

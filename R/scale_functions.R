@@ -1,10 +1,10 @@
 #' @export
 tomtom_pal <- function(palette = "main", n, reverse = FALSE, ...) {
-    pal <- tomtom_palettes[[palette]]
+  pal <- tomtom_palettes[[palette]]
 
-    if (reverse) pal <- rev(pal)
+  if (reverse) pal <- rev(pal)
 
-    colorRampPalette(pal, ...)(n)
+  colorRampPalette(pal, ...)(n)
 }
 
 #' Color scale constructor for tomtom colors
@@ -19,16 +19,16 @@ tomtom_pal <- function(palette = "main", n, reverse = FALSE, ...) {
 
 
 scale_color_tomtom <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
-    pal <- tomtom_pal(palette = palette, reverse = reverse)
+  pal <- tomtom_pal(palette = palette, reverse = reverse)
 
-    if (discrete) {
-        discrete_scale("colour", paste0("tomtom_", palette), palette = pal, ...)
-    } else {
-        scale_color_gradientn(colours = pal(256), ...)
-    }
+  if (discrete) {
+    discrete_scale("colour", paste0("tomtom_", palette), palette = pal, ...)
+  } else {
+    scale_color_gradientn(colours = pal(256), ...)
+  }
 }
 
-#scale_color_tomtom <- scale_colour_tomtom
+# scale_color_tomtom <- scale_colour_tomtom
 
 #' Fill scale constructor for tomtom colors
 #'
@@ -42,11 +42,11 @@ scale_color_tomtom <- function(palette = "main", discrete = TRUE, reverse = FALS
 
 scale_fill_tomtom <- function(palette = "main", discrete = TRUE,
                               reverse = FALSE, ...) {
-    pal <- tomtom_pal(palette = palette, reverse = reverse)
+  pal <- tomtom_pal(palette = palette, reverse = reverse)
 
-    if (discrete) {
-        discrete_scale("colour", paste0("tomtom_", palette), palette = pal, ...)
-    } else {
-        scale_color_gradientn(colours = pal(256), ...)
-    }
+  if (discrete) {
+    discrete_scale("colour", paste0("tomtom_", palette), palette = pal, ...)
+  } else {
+    scale_color_gradientn(colours = pal(256), ...)
+  }
 }

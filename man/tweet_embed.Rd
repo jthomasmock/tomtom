@@ -21,9 +21,8 @@ The Twitter API GET call returns the tweet in markdown embedded format
 Arguments to pass to the API call can be found \href{https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-oembed}{here}
 }
 \examples{
-name   <- 'kearneymw'
-status <- '1087047171306856451'
+name <- "kearneymw"
+status <- "1087047171306856451"
 
 tweet_embed(screen_name = name, status_id = status)
-
 }
